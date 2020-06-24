@@ -8,6 +8,4 @@ env:
 install:
 - pip install -r requirements.txt
 
-# run test scripts
-script:
-- python manage.py test
+
