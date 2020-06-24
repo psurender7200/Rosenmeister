@@ -1,0 +1,22 @@
+--To create Database
+docker exec -it 5c0ba6961c2a createdb -U postgres TestDB
+--to remove all exited containers
+docker rm $(docker ps -a -f status=exited -q)
+
+--logout docker
+docker logout
+
+--login docker 
+docker login -u LOGIN -p PASSWORD
+
+
+You can simply use container's built-in init mechanism:
+
+COPY init.sql /docker-entrypoint-initdb.d/10-init.sql
+
+This makes sure that your sql is executed after DB server is properly booted up.
+
+psql -Upostgres -c '\z'
+
+
+http://127.0.0.1:8000/birthday/?start=1940-01-01&end=1950-01-01
